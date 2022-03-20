@@ -1,12 +1,12 @@
 # Cafe management system
 
 ## Environment used
-Mac OSX Big Sur (All steps should work on Windows as well)
-Visual Studio Code V. 1.64
-NVM - 0.39.1
-Node JS - 14.15.4
-NPM - 6.14.10
-MySQL Community tar file - https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.28-macos11-x86_64.tar.gz
+1. Mac OSX Big Sur (All steps should work on Windows as well)
+2. Visual Studio Code V. 1.64
+3. NVM - 0.39.1
+4. Node JS - 14.15.4
+5. NPM - 6.14.10
+6. MySQL Community tar file - https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.28-macos11-x86_64.tar.gz
 
 
 ### Node environment preparation for development
