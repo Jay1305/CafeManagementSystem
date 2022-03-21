@@ -8,7 +8,7 @@
     "start": "nodemon server.js"
   },
   "author": "Jay",
-  "license": "MIT",
+  "license": "FREE",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",

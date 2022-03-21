@@ -17,8 +17,8 @@ connection.connect((err)=>{
         console.log(`Error while connecting to MySQL - ${err}`);
         throw err;
     }
+    console.log("Database Connection established!");
 });
 
-console.log("Database Connection established!");
 
 module.exports=connection;
