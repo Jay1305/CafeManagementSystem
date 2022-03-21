@@ -12,6 +12,7 @@
 ### Node environment preparation for development
 1. Use Node Virtual Manager to install node versions as needed
 2. nvm install 14.15.4
+3. nvm use 14.15.4
 
 ### MySQL environment preparation for development
 1. Download MySQL community tar file using Safari - https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.28-macos11-x86_64.tar.gz
@@ -29,6 +30,8 @@
 3. mysql - for db connection
 4. dotenv - for envrionment variables
 5. nodemon - for development only to restart node process
+6. nodemailer - for sending emails
+7. jsonwebtoken - for JWT token
 
 
 This project was created while listening on Youtube video

@@ -9,7 +9,7 @@ create table user(
     contact_number varchar(20),
     email varchar(50),
     password varchar(250),
-    status bit,
+    status tinyint,
     role varchar(20),
     UNIQUE (email)
 );
