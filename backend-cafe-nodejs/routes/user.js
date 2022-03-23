@@ -60,9 +60,15 @@ router.post("/login", (req, resp) => {
 });
 
 router.post("/validate", (req, resp) => {
-    const token = req.body.token;
-    accessToken = jwt.verify(token,process.env.ACCESS_TOKEN,{complete:true});
-    return resp.status(500).json(accessToken);
+    try {
+        const token = req.body.token;
+        accessToken = jwt.verify(token,process.env.ACCESS_TOKEN,{complete:true});
+        console.log(accessToken);
+        return resp.status(200).json({message:"Valid token"});
+    }
+    catch {
+        return resp.status(401).json({message: "Invalid token"}); 
+    }
 });
 
 router.post("/forgotpassword", (req, resp) => {
@@ -83,6 +89,54 @@ router.post("/forgotpassword", (req, resp) => {
             return resp.status(500).json(err);
     });
     return resp.status(200).json({ message: "If the email associated matches with our records then we will send you details." });
+});
+
+
+router.get("/", (req,resp) => {
+    let query = "select id, name, contact_number, email, status from user where role ='user'";
+    connection.query(query,(err,results)=>{
+        if (!err)
+        {
+            return resp.status(200).json(results);
+        }
+        else
+        {
+            return resp.status(500).json(err);
+        }
+    });
+});
+
+router.patch("/update",(req, resp)=>{
+    let user = req.body;
+    let query = "update user set status =? where id=? and email!='admin@admin.com'";
+    connection.query(query,[user.status,user.id],(err,results)=>{
+        if(!err) {
+            if(results.affectedRows === 1){
+                resp.status(200).json({message:"Update successfully"})
+            }
+            else {
+                resp.status(400).json({message:"Issue updating the status. Please provide correct id."})
+            }
+        }
+        else
+            resp.status(500).json(err);
+    });
+});
+
+router.post('/changepassword',(req,resp)=>{
+    let user = req.body;
+    let query = "update user set password=? where email=? and email!='admin@admin.com' and password!=?";
+    connection.query(query,[user.password,user.email,user.password],(err,results)=>{
+        if(!err)
+        {
+            if(results.affectedRows===1)
+                return resp.status(200).json({message:"Password successfully updated"});
+            else
+                return resp.status(400).json({message: "Issue updating password for given email"});
+        }
+        else
+            return resp.status(500).json(err);
+    });
 });
 
 module.exports = router;
